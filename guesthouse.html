@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Ansh App">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="images/ansh.png">
+
+  <link href="css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="js/app.js">  </script>
+
+  <style>
+    .card {
+      border-radius: 10px;
+      cursor: pointer;
+      margin-bottom:0.5rem!important;
+    }
+    .card-header{
+      background-color: rgb(54, 54, 179);
+      color: white;
+    }
+    .card-title {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1rem;
+      font-family: Arial, sans-serif;
+    }
+    .card-img-top {
+      height: "100";
+      width: "50";
+      object-fit: contain;
+    }
+
+    ul {
+      list-style-type: circle;
+      padding-left: 1em;
+      
+    }
+    .hidden {
+      display: none;
+    }
+
+    #disciplineSelect {
+      margin-top: 5px;
+    }
+  
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row pt-3 nav-wrapper" style="background-color: rgb(54, 54, 179);color: white;padding-bottom: 10px;">
+      <div class="col-lg-12">
+        <div class="panel " style="margin-bottom: 0px;">
+          <div class="panel-content">
+            <!-- DataTables -->
+            <table style="width: 100%">
+              <tbody>
+                <tr>
+                  <td align="left" style="cursor: pointer;" onclick="window.location.href='index.html'">
+
+                    <img src="images/ic_launcher_round.png" height="50"
+                      style="margin-left: 0px; padding-left: 0px; padding-right: 5px;">
+                  </td>  
+                  <td align="center">
+                    <h5 style="font-weight: bold;">
+                      ISRO Guest House List
+                    </h5>
+                  </td>
+                  <td align="right"><img src="images/guest.png" height="50" style="padding-left: 5px;"></td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" >
+      <div class="d-none d-lg-block col-lg-7">
+        <div class="container-fluid" style="text-align: center;">
+          <img src="images/guest.png" style="width: 30%;padding-top: 10px;padding-bottom: 10px;float: left;">
+          <span align="right" style="padding-left: 20px;"> Guest House List are list of items which are provided
+            by SAC CHSS.CHSS Supplementary Items are list of items which are provided by SAC CHSS.CHSS Supplementary
+            Items are list of items which are provided by SAC CHSS. <br />
+            CHSS Supplementary Items are list of items which are provided by SAC CHSS.
+            CHSS Supplementary Items are list of items which are provided by SAC CHSS.CHSS Supplementary Items are list
+            of items which are provided by SAC CHSS. </span>
+        </div>
+      </div>
+
+      <div class="col-md-12 pt-1" >
+        <div class="input-group">
+          <input type="text" id="searchInput" class="form-control" placeholder="Search">
+          <button id="voiceSearchBtn" class="btn btn-outline-secondary">
+            <!--  <i class="fas fa-microphone"></i>-->
+
+            <img src="images/mic.png" height="20" style="padding-left: 5px;">
+          </button>
+        </div>
+      </div>
+
+      <div class="col-md-12 pt-1 pb-1">
+        <select id="filterSelect" class="form-select">
+          <option value="CITYNAME">CITY NAME</option>
+          <option value="STATE">STATE</option>
+          
+        </select>
+        
+      </div>
+      
+      
+      <div id="guesthousesList" class="container-fluid py-2" >
+        <!-- guesthouses will be rendered here -->
+      </div>
+      
+
+    </div>
+  </div>
+
+
+
+  <script type="module">
+    let guesthouses = [];
+    let recognition = null;
+    let isListening = false;
+   
+    // Fetch guesthouses data
+    async function fetchguesthouses() {
+      try {
+        const response = await fetch('data/GuesthousesData.json');
+        const guestdata = await response.json();
+        guesthouses = guestdata.GuestHouse;
+        renderguesthouses(guesthouses);
+      } catch (error) {
+        console.error('Error loading guest houses:', error);
+      }
+    }
+
+    // Initialize speech recognition
+    if ('webkitSpeechRecognition' in window) {
+      recognition = new webkitSpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = 'en-US';
+
+      recognition.onresult = function (event) {
+        const transcript = event.results[0][0].transcript;
+        document.getElementById('searchInput').value = transcript;
+        filterguesthouses();
+        stopRecognition();
+      };
+
+      recognition.onerror = function (event) {
+        console.error('Speech recognition error:', event.error);
+        stopRecognition();
+      };
+
+      recognition.onend = function () {
+        stopRecognition();
+      };
+    }
+
+    function stopRecognition() {
+      isListening = false;
+      voiceSearchBtn.classList.remove('listening');
+    }
+
+    // Voice search button handler
+    const voiceSearchBtn = document.getElementById('voiceSearchBtn');
+    voiceSearchBtn.addEventListener('click', () => {
+      if (recognition) {
+        if (!isListening) {
+          try {
+            recognition.start();
+            isListening = true;
+            voiceSearchBtn.classList.add('listening');
+          } catch (error) {
+            console.error('Speech recognition error:', error);
+            stopRecognition();
+          }
+        } else {
+          recognition.stop();
+          stopRecognition();
+        }
+      } else {
+        alert('Speech recognition is not supported in your mobile.');
+      }
+    });
+
+    function openGoogleMaps(geolocation) {
+      
+        if(!geolocation) return ;
+        
+        const[lat,lng]=geolocation.split(',').map(coord => coord.trim());
+        
+        let mapsURL = `https://www.google.com/maps?q=${lat},${lng}`;
+        window.open(mapsURL,'_blank');
+    }
+    function renderguesthouses(guesthousesToRender) {
+      
+      const guesthousesList = document.getElementById('guesthousesList');
+      if (guesthousesToRender.length === 0) {
+        guesthousesList.innerHTML = `
+              <div class="alert alert-info" role="alert">
+                No guest Houses found matching your criteria.
+              </div>
+            `;
+        return;
+      }
+      guesthousesList.innerHTML = guesthousesToRender.map(guesthouse => `
+            <div class="card">
+              <div class="card-header">
+                <h5 style="margin-bottom:0px;">
+                  <td align="right"><img src="images/guest.png" height="40"> ${guesthouse.CITYNAME || 'N/A'} (${guesthouse.NAME})  
+                </h5>
+              </div>
+              <div class="card-body">
+                
+                <p class="mb-1"> <img src="images/map.png" height="30" style="padding-left: 0px;" onclick="openGoogleMaps('${guesthouse.GEOLOCATION || ''}')"  >
+                  ${guesthouse.STREET1} ${guesthouse.STREET2 || ''} ${guesthouse.PLACENAME || ''}  ${guesthouse.CITYNAME || ''}, ${guesthouse.STATE || ''} ${guesthouse.PINCODE || ''}</p>
+                
+                  <p class="mb-1"><strong>Phone No:</strong> (Ext : ${guesthouse.EXTENSION})  ${guesthouse.TELENO || 'N/A'}</p>
+                  <p class="mb-1"><strong>PRO Phone : </strong> ${guesthouse.PRONO || 'N/A'}</p>
+                <p class="mb-1"><strong>PRO Phone : </strong> ${guesthouse.PRONO || 'N/A'}</p>
+                <p class="mb-1"><strong>Email  : </strong> ${guesthouse.EMAIL || 'N/A'}</p>
+                <p class="mb-1"><strong>Transport : </strong>  ${[guesthouse.TRANSPORT_EMAIL, guesthouse.TRANSPORT_EMAIL].filter(Boolean).join(', ') || 'N/A'}  </p>
+              
+              </div>
+            </div>
+          `).join('');
+    }
+
+    function filterguesthouses() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const filterType = document.getElementById('filterSelect').value;
+       const filtered = guesthouses.filter(guesthouse => {
+       return guesthouse[filterType] &&
+        guesthouse[filterType].toLowerCase().includes(searchTerm);
+
+     })
+      renderguesthouses(filtered);
+    }
+
+    // Event listeners
+    document.getElementById('searchInput').addEventListener('input', filterguesthouses);
+    document.getElementById('filterSelect').addEventListener('change', (e) => {
+      
+      filterguesthouses();
+    });
+      
+    window.openGoogleMaps=openGoogleMaps;
+    
+    // Initial fetch and render
+    fetchguesthouses();
+  </script>
+</body>
+
+</html>

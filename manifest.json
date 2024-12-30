@@ -1,0 +1,52 @@
+{
+  "name": "Ansh",
+  "short_name": "Ansh",
+  
+  
+  "start_url": "/AnshApp/",
+  "scope":"/AnshApp/",
+  "display": "standalone",
+  "background_color": "white",
+  "theme_color": "white",
+  "descriptoin":"CHSS Information , Guest House Information of Space Applications Centre ",
+  
+  
+  "screenshots": [{
+    "src": "logo.png",
+    "sizes": "182x182",
+    "type": "image/png",
+    "form_factor":"wide"
+  },{
+    "src": "Shortcut_Home.PNG",
+    "sizes": "182x182",
+    "type": "image/png",
+    "form_factor":"wide"
+  },{
+    "src": "Shortcut_Supp.PNG",
+    "sizes": "182x182",
+    "type": "image/png",
+    "form_factor":"wide"
+  }],  
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "182x182",
+      "type": "image/png"
+    },
+    {
+      "src": "images/Shortcut_Home.png",
+      "sizes": "182x182",
+      "type": "image/png"
+    }],
+  "shortcuts" : [
+    {
+      "name":"Doctors Details",
+      "url":"doctors.html"
+    },
+    {
+      "name":"Guest House Details",
+      "url":"guesthouse.html"
+    }
+  ]
+}
+
