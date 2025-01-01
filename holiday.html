@@ -52,11 +52,10 @@
       @media(max-width:680px) {
       .bkg{
         background-image: url(images/calendar.png);
+        background-repeat: no-repeat;
         background-size: contain;
         font-size: large;
-        padding-top: 0.5rem;
-        height: 50;
-        width: 50;
+        
         display: block;
       }
     }
@@ -100,7 +99,7 @@
                       Holiday List <br />
                     </h5>
                   </td>
-                  <td align="right"><img src="images/holiday.png" height="50" style="padding-left: 5px;"></td>
+                  <td align="right"><img src="images/holiday.png" height="50" style="padding-left: 5px;padding-bottom: 5px;"></td>
 
                 </tr>
               </tbody>
@@ -110,17 +109,35 @@
       </div>
     </div>
     <div class="row" >
-      <div class="d-none d-lg-block col-lg-7">
-        <div class="container-fluid" style="text-align: center;padding-bottom: 10px;">
-          <img src="images/holiday.png" style="width: 30%;padding-top: 10px;padding-bottom: 10px;float: left;">
-          <span align="right" style="padding-left: 20px;"> CHSS Supplementary Items are list of items which are provided
-            by SAC CHSS.CHSS Supplementary Items are list of items which are provided by SAC CHSS.CHSS Supplementary
-            Items are list of items which are provided by SAC CHSS. <br />
-            CHSS Supplementary Items are list of items which are provided by SAC CHSS.
-            CHSS Supplementary Items are list of items which are provided by SAC CHSS.CHSS Supplementary Items are list
-            of items which are provided by SAC CHSS. </span>
+     
+      <div class="d-none d-lg-block col-lg-12">
+        <div class="container-fluid" style="text-align: center;">
+
+          <div class="row">
+          <span class="col-lg-4">
+          <img src="images/holiday.png" height="300"  style="padding-top: 10px;padding-bottom: 10px">
+          </span>
+
+          <span class="col-lg-8" style="padding-left: 1rem;padding-top: 1rem;">
+          
+            <p style="text-align: justify;"> <b>Holiday List for SAC Employees : </b>SAC provides its employees with a number of holidays throughout the year in observance of major religious and cultural festivals. These holidays aim to ensure employees have the opportunity to celebrate important festivals with their families and communities.<br/> 
+              <p style="font-weight: bold;margin-bottom: 0px;text-align: justify;">* <u>Festival-Based Holidays: <br/></u></p>
+              <ul style="list-style: disc;text-align: justify;">
+                <li>SAC recognizes a variety of national and regional festivals celebrated across India.</li>
+                <li>The holiday dates may vary depending on the specific cultural and religious observances followed by employees in different regions.</li>
+                
+              </ul>
+              
+              <p style="font-weight: bold;margin-top: 1rem;margin-bottom: 0px;text-align: justify;color:red"> 
+                Employees are advised to view the official SAC holiday list each year, as the dates may be subject to administrative approval and adjustments.
+              </p>
+            </p> 
+          
+            </span>
+          </div>
         </div>
       </div>
+
       <div class="container py-4" style="background-image: linear-gradient(180deg,rgb(54, 54, 179) 5%, transparent)">
         <div class="row gx-1">
 
@@ -182,7 +199,7 @@
                     </tr>
                     ${holidays.map(holiday => `
                       <tr>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bkg">${new Date(holiday.DateofHoliday).toLocaleDateString('en-IN', {
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bkg" style="padding-top:0.7rem">${new Date(holiday.DateofHoliday).toLocaleDateString('en-IN', {
                           day: '2-digit',
                           
                           

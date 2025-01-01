@@ -72,6 +72,8 @@ const URLS_CACHE_ONLY = [
 const URLS_OVER_NETWORK_WITH_CACHE_FALLBACK = [
 	
 	'/AnshApp/manifest.json',
+	'/AnshApp/js/app.js',
+	
 	'/AnshApp/index.html',
 	'/AnshApp/doctors.html',
 	'/AnshApp/guesthouse.html',
@@ -80,8 +82,9 @@ const URLS_OVER_NETWORK_WITH_CACHE_FALLBACK = [
 	'/AnshApp/SupplItems.html',
 	'/AnshApp/Inadmissible.html',
 	'/AnshApp/WardCharges.html',
-	'/AnshApp/serviceWorker.js',
-	'/AnshApp/js/app.js',
+	'/AnshApp/About.html',
+	
+
 	'/AnshApp/data/DoctorsData.json',
 	'/AnshApp/data/GuesthousesData.json',  
 	'/AnshApp/data/HolidayData.json',   
@@ -90,14 +93,31 @@ const URLS_OVER_NETWORK_WITH_CACHE_FALLBACK = [
 ];
 
 //document.getElementById("panelInstall").show();
-/*
+
 let deferredPrompt;
 
 self.addEventListener('beforeinstallprompt', evt => {
 	console.log('before install prompt');
 	evt.preventDefault();
 	deferredPrompt = evt; 
-})*/
+
+	setTimeout(() => {
+		if(deferredPrompt) {
+			deferredPrompt.prompt();
+
+			deferredPrompt.userChoice.then((choiceResult) => {
+				if(choiceResult.outcome === 'accepted') {
+					console.log('user accepted install prompt');
+				} else {
+					console.log('user dismmised install prompt');
+				}
+			deferredPrompt=null;
+			});
+		}
+		},2000);
+	});
+
+
 
 
 

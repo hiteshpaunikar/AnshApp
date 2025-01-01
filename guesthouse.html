@@ -47,6 +47,9 @@
     #disciplineSelect {
       margin-top: 5px;
     }
+    p{
+      text-align: justify;
+    }
   
   </style>
 </head>
@@ -82,16 +85,38 @@
     </div>
 
     <div class="row" >
-      <div class="d-none d-lg-block col-lg-7">
-        <div class="container-fluid" style="text-align: center;">
-          <img src="images/guest.png" style="width: 30%;padding-top: 10px;padding-bottom: 10px;float: left;">
-          <span align="right" style="padding-left: 20px;"> Guest House List are list of items which are provided
-            by SAC CHSS.CHSS Supplementary Items are list of items which are provided by SAC CHSS.CHSS Supplementary
-            Items are list of items which are provided by SAC CHSS. <br />
-            CHSS Supplementary Items are list of items which are provided by SAC CHSS.
-            CHSS Supplementary Items are list of items which are provided by SAC CHSS.CHSS Supplementary Items are list
-            of items which are provided by SAC CHSS. </span>
-        </div>
+      <div class="d-none d-lg-block col-lg-12">
+        <div class="container-fluid" style="text-align: center;">   
+          <div class="row">
+              <span class="col-lg-4">
+                <img src="images/guest.png" height="300"  style="padding-top: 10px;padding-bottom: 10px">
+              </span>
+
+              <span class="col-lg-8" style="padding-left: 1rem;padding-top: 1rem;">
+          
+                <p style="text-align: justify;"> <b>ISRO Guest House Facility : </b>The Indian Space Research Organisation (ISRO) provides guest house accommodations to its employees and retired employees  across various cities in India. These facilities are designed to offer a comfortable and convenient stay, primarily for employees on official duty, training, or transit. <br/> 
+                  <p style="font-weight: bold;margin-bottom: 0px;">* <u>Key Features : </u></p>
+                  <ul style="list-style: disc;text-align: justify;">
+                    <li>Well-furnished rooms with essential amenities.</li>
+                    <li>Dining facilities with homely meals</li>
+                    <li>Affordable charges with priority given to official bookings.</li>
+                  </ul>
+                  
+                  <p style="font-weight: bold;margin-top: 1rem;margin-bottom: 0px;">* <u>Eligibility : </u></p>
+                  <ul style="list-style: disc;text-align: justify;">
+                    <li>ISRO employees (current and retired).</li>
+                    
+                    <li style="font-weight: bold;color: red;">Accommodation is subject to availability and must be booked in advance through the concerned ISRO center.</li>
+                  </ul>
+
+                </p>       
+                  
+                  
+            
+            </span>
+          </div>
+        </div>      
+        
       </div>
 
       <div class="col-md-12 pt-1" >
@@ -250,7 +275,7 @@
     // Event listeners
     document.getElementById('searchInput').addEventListener('input', filterguesthouses);
     document.getElementById('filterSelect').addEventListener('change', (e) => {
-      
+      document.getElementById('searchInput').value='';
       filterguesthouses();
     });
       

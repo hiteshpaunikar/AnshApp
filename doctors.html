@@ -51,6 +51,10 @@
     #disciplineSelect {
       margin-top: 5px;
     }
+
+    p{
+      text-align: justify;
+    }
   </style>
 </head>
 
@@ -87,15 +91,30 @@
     </div>
 
     <div class="row" >
-      <div class="d-none d-lg-block col-lg-7">
+      <div class="d-none d-lg-block col-lg-12">
         <div class="container-fluid" style="text-align: center;">
-          <img src="images/doctor.png" style="width: 30%;padding-top: 10px;padding-bottom: 10px;float: left;">
-          <span align="right" style="padding-left: 20px;"> CHSS Supplementary Items are list of items which are provided
-            by SAC CHSS.CHSS Supplementary Items are list of items which are provided by SAC CHSS.CHSS Supplementary
-            Items are list of items which are provided by SAC CHSS. <br />
-            CHSS Supplementary Items are list of items which are provided by SAC CHSS.
-            CHSS Supplementary Items are list of items which are provided by SAC CHSS.CHSS Supplementary Items are list
-            of items which are provided by SAC CHSS. </span>
+
+          <div class="row">
+          <span class="col-lg-4">
+          <img src="images/doctor.png" height="300"  style="padding-top: 10px;padding-bottom: 10px">
+          </span>
+
+          <span class="col-lg-8" style="padding-left: 1rem;padding-top: 1rem;">
+          
+            <p style="text-align: justify;"> <b>Contributory Health Service Scheme(CHSS) </b>provides comprehensive healthcare support to ISRO employees through a network of dedicated medical facilities, including hospitals, clinics, and diagnostic laboratories. These facilities aim to ensure the well-being of ISRO's personnel and their families by offering preventive, curative, and emergency medical services.
+            Key Features: <br/> 
+            <ul style="list-style: disc;padding: 0px;margin: 0px;text-align: justify;">
+            <li >Doctor List: ISRO medical facilities are staffed with a multidisciplinary team of healthcare professionals, including general physicians, specialists (such as cardiologists, orthopedists, and ENT specialists), and paramedical staff. The specific list of doctors varies by location.</li>
+            <li >	Hospital List: ISRO operates and collaborates with hospitals to provide best facility. These hospitals cater to routine check-ups, specialized treatments, and emergencies.</li>
+            <li >	Laboratory Services: Accredited diagnostic laboratories associated with ISRO facilities provide a wide range of testing services, including blood tests, imaging (X-ray, MRI, CT scans), and other advanced diagnostics essential for employee health monitoring.</li>
+            
+          </ul>
+          
+           
+          </p>
+          
+            </span>
+          </div>
         </div>
       </div>
 
@@ -311,13 +330,16 @@
     // Event listeners
     document.getElementById('searchInput').addEventListener('input', filterDoctors);
     document.getElementById('filterSelect').addEventListener('change', (e) => {
+      document.getElementById('searchInput').value='';
       updateSearchHint(e.target.value);
       updateDisciplineDropdown(e.target.value);
       filterDoctors();
     });
 
-    document.getElementById('disciplineSelect').addEventListener('change', filterDoctors);
-      
+    document.getElementById('disciplineSelect').addEventListener('change', (e) => {
+      document.getElementById('searchInput').value='';
+      filterDoctors();
+    });
     window.openGoogleMaps=openGoogleMaps;
     
     // Initial fetch and render

@@ -12,20 +12,25 @@
   
   
   "screenshots": [{
-    "src": "logo.png",
-    "sizes": "182x182",
+    "src": "logo_ss.png",
+    "sizes": "320x320",
     "type": "image/png",
     "form_factor":"wide"
   },{
     "src": "Shortcut_Home.PNG",
-    "sizes": "182x182",
+    "sizes": "320x320",
     "type": "image/png",
     "form_factor":"wide"
   },{
     "src": "Shortcut_Supp.PNG",
-    "sizes": "182x182",
+    "sizes": "320x320",
     "type": "image/png",
     "form_factor":"wide"
+  },{
+    "src": "Shortcut_Home_icon.PNG",
+    "sizes": "320x320",
+    "type": "image/png"
+    
   }],  
   "icons": [
     {
@@ -34,18 +39,32 @@
       "type": "image/png"
     },
     {
-      "src": "images/Shortcut_Home.png",
-      "sizes": "182x182",
+      "src": "logo_ss.png",
+      "sizes": "320x320",
       "type": "image/png"
     }],
   "shortcuts" : [
     {
       "name":"Doctors Details",
-      "url":"doctors.html"
+      "url":"doctors.html",
+      "icons":[
+        {
+        "src":"/AnshApp/images/doctor_ss.png",
+        "sizes":"96x96",
+        "type": "image/png"
+      }
+      ]
     },
     {
       "name":"Guest House Details",
-      "url":"guesthouse.html"
+      "url":"guesthouse.html",
+      "icons":[
+        {
+          "src":"/AnshApp/images/guest_ss.png",
+          "sizes":"96x96",
+          "type": "image/png"
+      }
+      ]     
     }
   ]
 }
