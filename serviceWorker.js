@@ -1,6 +1,6 @@
 
 const staticCacheName = ['ansh-v2'];
-const CACHE_NAME='ansh-v1';
+const CACHE_NAME='ansh-v2';
 
 const URLS_CACHE_ONLY = [
 	  '/AnshApp/images/mic.png'	,
