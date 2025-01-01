@@ -1,5 +1,5 @@
 
-const staticCacheName = ['ansh-v1'];
+const staticCacheName = ['ansh-v2'];
 const CACHE_NAME='ansh-v1';
 
 const URLS_CACHE_ONLY = [
