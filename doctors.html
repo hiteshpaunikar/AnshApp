@@ -25,20 +25,7 @@
       background-color: rgb(54, 54, 179);
       color: white;
     }
-    .card-title {
-      text-align: center;
-      font-weight: bold;
-      font-size: 1rem;
-      font-family: Arial, sans-serif;
-
-    }
-
-    .card-img-top {
-      height: "100";
-      width: "50";
-      object-fit: contain;
-    }
-
+    
     ul {
       list-style-type: circle;
       padding-left: 1em;
@@ -101,12 +88,12 @@
 
           <span class="col-lg-8" style="padding-left: 1rem;padding-top: 1rem;">
           
-            <p style="text-align: justify;"> <b>Contributory Health Service Scheme(CHSS) </b>provides comprehensive healthcare support to ISRO employees through a network of dedicated medical facilities, including hospitals, clinics, and diagnostic laboratories. These facilities aim to ensure the well-being of ISRO's personnel and their families by offering preventive, curative, and emergency medical services.
-            Key Features: <br/> 
-            <ul style="list-style: disc;padding: 0px;margin: 0px;text-align: justify;">
-            <li >Doctor List: ISRO medical facilities are staffed with a multidisciplinary team of healthcare professionals, including general physicians, specialists (such as cardiologists, orthopedists, and ENT specialists), and paramedical staff. The specific list of doctors varies by location.</li>
-            <li >	Hospital List: ISRO operates and collaborates with hospitals to provide best facility. These hospitals cater to routine check-ups, specialized treatments, and emergencies.</li>
-            <li >	Laboratory Services: Accredited diagnostic laboratories associated with ISRO facilities provide a wide range of testing services, including blood tests, imaging (X-ray, MRI, CT scans), and other advanced diagnostics essential for employee health monitoring.</li>
+            <p style="text-align: justify;"> <b>Contributory Health Service Scheme(CHSS) </b>provides comprehensive healthcare support to ISRO employees through a network of dedicated medical facilities including hospitals, clinics and diagnostic laboratories. These facilities aim to ensure the well-being of ISRO's personnel and their families by offering preventive, curative and emergency medical services.
+              <p style="font-weight: bold;margin-bottom: 0px;margin-left: 0px;">* <u>Key Features : </u></p>
+            <ul style="list-style: disc;text-align: justify;">
+            <li><b>Doctor List:</b> ISRO medical facilities consists a teams of healthcare professionals, including general physicians, specialists (such as cardiologists, orthopedics, ENT specialists etc.), and paramedical staff</li>
+            <li><b>Hospital List:</b> ISRO operates and collaborates with hospitals to provide best facilities. These hospitals cater to routine check-ups, specialized treatments and emergencies</li>
+            <li><b>	Laboratory Services: </b>Accredited diagnostic laboratories associated with ISRO facilities provide a wide range of testing services, including blood tests, imaging (X-ray, MRI, CT scans etc.) and other advanced diagnostics essential for employee health monitoring</li>
             
           </ul>
           
@@ -164,7 +151,13 @@
     // Fetch doctors data
     async function fetchDoctors() {
       try {
-        const response = await fetch('data/DoctorsData.json');
+        const response = await fetch('data/DoctorsData.json', {
+          headers: {
+            'Cache-Control':'no-cache,no-store,must-revalidate',
+            'Pragma':'no-cache',
+            'Expires':'0'
+          }
+        });
         const data = await response.json();
         doctors = data.Doctor;
         renderDoctors(doctors);
@@ -263,24 +256,43 @@
 
       doctorsList.innerHTML = doctorsToRender.map(doctor => `
             <div class="card">
-              <div class="card-header" data-bs-toggle="collapse"  href='#${doctor.AMODOCTORCODE}''>
+              <div class="card-header">
                 <h5 style="margin-bottom:0px;">
-                  <td align="right"><img src="images/specialist.png" height="50"> ${doctor.AMODOCTORNAME || 'N/A'}  
-                  
-                    <i class="fas fa-chevron-circle-down" style="float:right;margin-top:1rem"></i>
+                  <td align="right"><img src="images/specialist.png" height="35" >&nbsp; <strong>${doctor.AMODOCTORNAME || 'N/A'} </strong>
+                
                 </h5>
               </div>
-              <div class="card-body" style="curser:copy">
-                <!--<h3 class="h5 mb-2">${doctor.AMODOCTORNAME || 'N/A'}</h3>-->
-                <p class="mb-1"><strong>Doctor Type:</strong> ${doctor.MEDDISCIPLNAME || 'N/A'}</p>
-                <p class="mb-1"><strong>Doctor Area:</strong> ${doctor.AMOAREANAME || 'N/A'}</p>
-                <p class="mb-1"><strong>Timings:</strong> ${doctor.AMOTIMINGS || 'N/A'}</p>
-                <span id='${doctor.AMODOCTORCODE}' class="collapse" data-bs-parent="#doctorsList">
-                  <p class="mb-1"><strong>Medicine Type:</strong> ${doctor.MEDICINETYPE || 'N/A'}</p>  
-                <p class="mb-1" style="float:left"><a href="tel:${doctor.PRIMARYPHONE}" class="dial-link"><img src="images/call.png" height="40" style="padding-left: 0px;"> </a><strong>:</strong> ${doctor.AMOPHONENO || 'N/A'}</p>
+              <div class="card-body" style="cursor:copy;padding-top:0px;">
                 
-                <p class="mb-0" style="float:left"><img src="images/map.png" height="40" style="padding-left: 0px;" onclick="openGoogleMaps('${doctor.GEOLOCATION || ''}')"  ><strong> :</strong> ${[doctor.AMOHOUSENO, doctor.AMOSTREET, doctor.AMOPLACE].filter(Boolean).join(', ') || 'N/A'}
-                </p>
+                
+                <table width="100%">
+                <tr>
+                  <td align="left">
+                <span class="mb-1"><strong>Type:</strong> ${doctor.MEDDISCIPLNAME || 'N/A'} (${doctor.MEDICINETYPE || 'N/A'})</span> <br/>
+                <span class="mb-1"><strong>Area:</strong> ${doctor.AMOAREANAME || 'N/A'}</span> <br/>
+                <span class="mb-1"><i class="fas fa-clock"></i> : ${doctor.AMOTIMINGS || 'N/A'}</span><br/>
+                <span class="mb-1"><i class="fas fa-phone-square-alt"></i> <strong>:</strong> ${doctor.AMOPHONENO || 'N/A'}</span>
+                   </td>
+                   <td align="right"> 
+                
+                  <a href="tel:${doctor.PRIMARYPHONE}" class="dial-link"><img src="images/call.png" height="40" style="padding-left: 0px;"> </a>
+                  </br>
+                  <img src="images/map.png" height="40" style="padding-left: 0px;" onclick="openGoogleMaps('${doctor.GEOLOCATION || ''}')"  >
+                  </td>
+                  </tr>
+                  <tr>
+                      <td colspan="2"> <span class="mb-0" style="text-align:justify"><i class="fas fa-address-card"></i> <strong> :</strong> ${[doctor.AMOHOUSENO, doctor.AMOSTREET, doctor.AMOPLACE].filter(Boolean).join(', ') || 'N/A'}
+                        </td>
+                  </tr>
+                  </table>
+                
+              
+              
+                  
+               
+                
+               
+                </span>
               </span>
               </div>
             </div>
@@ -342,6 +354,7 @@
     });
     window.openGoogleMaps=openGoogleMaps;
     
+  //  setInterval(fetchDoctors,7000);
     // Initial fetch and render
     fetchDoctors();
   </script>

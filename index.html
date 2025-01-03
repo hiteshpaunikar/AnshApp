@@ -1,44 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<meta name="description" content="Ansh App">
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" href="images/ansh.png">
-<!-- ios support -->
-<link rel="apple-touch-icon" href="images/icon-72x72.png">
-<link rel="apple-touch-icon" href="images/icon-96x96.png">
-<link rel="apple-touch-icon" href="images/icon-128x128.png">
-<link rel="apple-touch-icon" href="images/icon-144x144.png">
-<link rel="apple-touch-icon" href="images/icon-152x152.png">
-<link rel="apple-touch-icon" href="images/icon-192x192.png">
-<link rel="apple-touch-icon" href="images/icon-384x384.png">
-<link rel="apple-touch-icon" href="images/icon-512x512.png">
-<meta name="apple-mobile-web-app-status-bar" content="#311b92">
-<meta name="theme-color" content="#311b92">
+  <meta name="description" content="Ansh App">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="images/ansh.png">
+  <!-- ios support -->
+  <link rel="apple-touch-icon" href="images/icon-72x72.png">
+  <link rel="apple-touch-icon" href="images/icon-96x96.png">
+  <link rel="apple-touch-icon" href="images/icon-128x128.png">
+  <link rel="apple-touch-icon" href="images/icon-144x144.png">
+  <link rel="apple-touch-icon" href="images/icon-152x152.png">
+  <link rel="apple-touch-icon" href="images/icon-192x192.png">
+  <link rel="apple-touch-icon" href="images/icon-384x384.png">
+  <link rel="apple-touch-icon" href="images/icon-512x512.png">
+  <meta name="apple-mobile-web-app-status-bar" content="#311b92">
+  <meta name="theme-color" content="#311b92">
 
-    
-<!--<script type="text/javascript" src="js/jquery.min.js"> </script> -->
-    <!-- Compiled and minified CSS -->
-    <!-- <link rel="stylesheet" href="css/materialize.min.css"> -->
-    <!-- Compiled and minified JavaScript -->
-    <!-- <script src="js/materialize.min.js"></script> -->
-           
-<!--    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
-  
-   <link href="css/all.min.css" rel="stylesheet"> 
+
+  <!--<script type="text/javascript" src="js/jquery.min.js"> </script> -->
+  <!-- Compiled and minified CSS -->
+  <!-- <link rel="stylesheet" href="css/materialize.min.css"> -->
+  <!-- Compiled and minified JavaScript -->
+  <!-- <script src="js/materialize.min.js"></script> -->
+
+  <!--    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+
+  <link href="css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  
+
   <script src="js/bootstrap.bundle.min.js"></script>
-  
-  
-  
-     <script type="text/javascript" src="js/app.js">
-     </script>
-     <script>
-      var themeColor="#311b92";
+
+
+
+  <script type="text/javascript" src="js/app.js">
+  </script>
+  <script>
+    var themeColor = "#311b92";
     /*  $(".nav-wrapper").css("background-color", themeColor);
     //  $(".nav-wrapper").css("color", white);
       $(".secondary-content>.material-icons").css("color", themeColor);
@@ -53,180 +54,312 @@
       
       $(".material-icons").css("color",themeColor);
       $("#menu").css("color","white"); */
-      </script>
-      
-    
-      
-    <style>
-      .card {
-        border-radius: 30px;
-        cursor: pointer;
-      }
-     .card-title{
+  </script>
+
+
+
+  <style>
+    .card {
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    .card-title {
       text-align: center;
       font-weight: bold;
       font-size: 1rem;
-      font-family: Arial,  sans-serif;
-     }
-     .card-img-top{
-      height:"100";
-      width:"50";
-      object-fit: contain;
-     }
-     .p-3 {
-      padding: 0.40rem !important;
-     }
-  	
-  </style>
-  </head> 
+      font-family: Arial, sans-serif;
+    }
 
-    
-  
-    <body>
-    
-<div class="container-fluid">
-  <div class="row pt-3 nav-wrapper" style="background-color: rgb(54, 54, 179);color: white;">
-		<div class="col-lg-12">
-			<div class="panel " style="margin-bottom: 0px;">
-				<div class="panel-content">
-					<!-- DataTables -->
-					<table style="width: 100%">
-						<tbody><tr>
-							<td align="left" class="d-none d-lg-block"><img src="images/saclogo.jpg" height="60" style="padding-left: 5px;"></td>
-							<td align="center"><h6 style="font-weight: bold;">
-                Indian Space Research Organisation <br/>
-                Space Applications Centre <br/>
-                Ahmedabad - 380015
-								</h6></td>
-							<td align="right"><img src="images/ic_launcher_round.png" height="60" style="margin-left: 0px; padding-left: 0px; padding-right: 5px;">
-                
-						</tr>
-					</tbody></table>
-				</div>
-			</div>
-		</div>
-	</div>
-<!--		<div class="row" id="panelInstall" stye="border-bottom: 1px solid black; padding-bottom:10px">
-			<div class="col s9">
-				<div class="col s1" style="padding-top:4px">
-				<i class="far fa-times-circle" style="cursor: pointer;" onclick="$('#panelInstall').fadeOut()"></i>
-					
-				</div>
-				<div class="col s11"> Enjoy the seamless experience, even if you are offline.</div> 
-			</div>
-			<div class="col s3" style="text-align: right; padding-right:10px">
-				<button id="btnInstall" class="btn btn-small waves-effect waves-light" style="padding-right:10px">Install</button>
-			</div>
+    .card-img-top {
+      height: "100";
+      width: "50";
+      object-fit: contain;
+    }
+
+    .p-3 {
+      padding: 0.40rem !important;
+    }
+
+    #installModal {
+      display: none;
+      /* Initially hidden */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      /* Semi-transparent background */
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    #modalContent {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    #modalContent h2 {
+      margin-bottom: 10px;
+    }
+
+    #modalContent button {
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+
+    #installButton {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    #dismissButton {
+      background-color: #f44336;
+      color: white;
+    }
+  </style>
+</head>
+
+
+
+<body>
+
+
+  <div class="container-fluid">
+    <div class="row pt-3 nav-wrapper" style="background-color: rgb(54, 54, 179);color: white;">
+      <div class="col-lg-12">
+        <div class="panel " style="margin-bottom: 0px;">
+          <div class="panel-content">
+            <!-- DataTables -->
+            <table style="width: 100%">
+              <tbody>
+                <tr>
+                  <td align="left" class="d-none d-lg-block"><img src="images/saclogo.jpg" height="60"
+                      style="padding-left: 5px;"></td>
+                  <td align="center">
+                    <h6 style="font-weight: bold;">
+                      Indian Space Research Organisation <br />
+                      Space Applications Centre <br />
+                      Ahmedabad - 380015
+                    </h6>
+                  </td>
+                  <td align="right"><img src="images/ic_launcher_round.png" height="60"
+                      style="margin-left: 0px; padding-left: 0px; padding-right: 5px;">
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--	<div class="row" id="panelInstall"  style="border-bottom: 1px solid black; padding-left:0px;display:none;">
+			
+
+      <table style="width: 100%">
+        <tbody><tr>
+          <td align="left" class="d-lg-block"><img src="images/ic_launcher_round.png" height="30" style="padding-left: 5px;"></td>
+          <td align="center"><h6 style="font-weight: bold;">
+            Enjoy the seamless experience. 
+          </td>
+          <td align="right">
+            <button id="btnInstall" class="btn btn-small " style="padding-right:0.5rem;padding-left:0.5rem;border: 2px solid darkblue;color: red;font-size:large ;">Install</button>
+          </td>  
+        </tr>
+      </tbody></table>
+
 		</div>      -->
 
-  <div class="row" style="background-image: linear-gradient(blue 20%);" >
-
-	
-   <div class="d-none d-lg-block col-lg-7">
-	  <div class="container-fluid" style="text-align: center;">
-	    <img src="images/undraw_add_tasks_mxew.svg" style="width: 25%;padding-top: 10px;padding-bottom: 10px;">
-	  </div>
-  </div> 
-  
- 
-  <div class="container py-4" style="background-image: linear-gradient(180deg,rgb(54, 54, 179) 5%, transparent)">
-    <div class="row gx-1">
-      
-      
-        <div class="col-6 col-lg-3 p-3">
-            <div class="card pt-4"  onclick="window.location.href='doctors.html'" >
-                <img src="images/doctor.png" class="card-img-top" alt="Doctors List" height="100" width="50" >
-                
-                <div class="card-body">
-                    <h5 class="card-title">Doctors List</h5>
-                  
-                </div>
-            </div>
-        </div>
-      
-        <div class="col-6 col-lg-3 p-3">
-          <div class="card pt-4" onclick="window.location.href='guesthouse.html'">
-                <img src="images/guest.png" class="card-img-top" alt="Guest House List" height="100" width="50">
-                
-                <div class="card-body">
-                    <h5 class="card-title">Guest House</h5>
-                    
-                  
-                </div>
-            </div>
-        </div>
-      
+    <!-- Modal Pop-up -->
+    <div id="installModal">
+      <div id="modalContent">
         
-      
-        <div class="col-6 col-lg-3 p-3">
-          <div class="card pt-4" onclick="window.location.href='SupplItems.html'" >
-                <img src="images/supplementry.png" class="card-img-top" alt="Supplementary Items" height="100" width="100" >
-                <div class="card-body" >
-                    <h5 class="card-title">Supplementary <br/>Items</h5>
-                  
-                </div>
-            </div>
+        <img src="images/ic_launcher_round.png" height="100">
+        <p style="font-weight: bold;">Install app for a better experience.</p> <button id="installButton">Install</button>
+        <button id="dismissButton">Dismiss</button>
+      </div>
+    </div>
+
+    <div class="row" style="background-image: linear-gradient(blue 20%);">
+
+
+      <div class="d-none d-lg-block col-lg-7">
+        <div class="container-fluid" style="text-align: center;">
+          <img src="images/undraw_add_tasks_mxew.svg" style="width: 25%;padding-top: 10px;padding-bottom: 10px;">
         </div>
-
-        <div class="col-6 col-lg-3 p-3">
-          <div class="card pt-4" onclick="window.location.href='Inadmissible.html'" >
-              <img src="images/items.png" class="card-img-top" alt="Inadmissible Items" height="100" width="100" >
-              <div class="card-body">
-                  <h5 class="card-title">Inadmissible <br/>Items</h5>
-                  
-              </div>
-          </div>
       </div>
 
-      <div class="col-6 col-lg-3 p-3">
-        <div class="card pt-4" onclick="window.location.href='WardCharges.html'" >
-              <img src="images/wardcharges.png" class="card-img-top" alt="Ward Charges" height="100" width="50" >
-              <div class="card-body">
-                  <h5 class="card-title" >Ward Charges</h5>
-                
-              </div>
-          </div>
-      </div>
 
-      <div class="col-6 col-lg-3 p-3">
-        <div class="card pt-4" onclick="window.location.href='ImpTelephone.html'">
-            <img src="images/phone.png" class="card-img-top" alt="Telephone Numbers" height="100" width="100" >
-            <div class="card-body">
+      <div class="container py-4" style="background-image: linear-gradient(180deg,rgb(54, 54, 179) 5%, transparent)">
+        <div class="row gx-1">
+
+
+          <div class="col-6 col-lg-3 p-3">
+            <div class="card pt-4" onclick="window.location.href='doctors.html'">
+              <img src="images/doctor.png" class="card-img-top" alt="Doctors List" height="100" width="50">
+
+              <div class="card-body">
+                <h5 class="card-title">Doctors List</h5>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-3 p-3">
+            <div class="card pt-4" onclick="window.location.href='guesthouse.html'">
+              <img src="images/guest.png" class="card-img-top" alt="Guest House List" height="100" width="50">
+
+              <div class="card-body">
+                <h5 class="card-title">Guest House</h5>
+
+
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="col-6 col-lg-3 p-3">
+            <div class="card pt-4" onclick="window.location.href='SupplItems.html'">
+              <img src="images/supplementry.png" class="card-img-top" alt="Supplementary Items" height="100"
+                width="100">
+              <div class="card-body">
+                <h5 class="card-title">Supplementary <br />Items</h5>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-3 p-3">
+            <div class="card pt-4" onclick="window.location.href='Inadmissible.html'">
+              <img src="images/items.png" class="card-img-top" alt="Inadmissible Items" height="100" width="100">
+              <div class="card-body">
+                <h5 class="card-title">Inadmissible <br />Items</h5>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-3 p-3">
+            <div class="card pt-4" onclick="window.location.href='WardCharges.html'">
+              <img src="images/wardcharges.png" class="card-img-top" alt="Ward Charges" height="100" width="50">
+              <div class="card-body">
+                <h5 class="card-title">Ward Charges</h5>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-3 p-3">
+            <div class="card pt-4" onclick="window.location.href='ImpTelephone.html'">
+              <img src="images/imptel.png" class="card-img-top" alt="Telephone Numbers" height="100" width="100">
+              <div class="card-body">
                 <h5 class="card-title">Imp. Telephone</h5>
-                
+
+              </div>
             </div>
-        </div>
-      </div>
-
-      <div class="col-6 col-lg-3 p-3">
-        <div class="card pt-4" onclick="window.location.href='holiday.html'" >
-          <img src="images/holiday.png" class="card-img-top" alt="Holidays List" height="100" width="100" >
-          <div class="card-body">
-              <h5 class="card-title" >Holidays List</h5>
-              
           </div>
-        </div>
-      </div>
 
-      <div class="col-6 col-lg-3 p-3">
-        <div class="card pt-4" onclick="window.location.href='About.html'"  >
-          <img src="images/about.png" class="card-img-top" alt="About Ansh" height="100" width="100" >
-          <div class="card-body">
-            <h5 class="card-title">About Ansh</h5>
-            
+          <div class="col-6 col-lg-3 p-3">
+            <div class="card pt-4" onclick="window.location.href='holiday.html'">
+              <img src="images/holiday.png" class="card-img-top" alt="Holidays List" height="100" width="100">
+              <div class="card-body">
+                <h5 class="card-title">Holidays List</h5>
+
+              </div>
+            </div>
           </div>
+
+          <div class="col-6 col-lg-3 p-3">
+            <div class="card pt-4" onclick="window.location.href='About.html'">
+              <img src="images/about.png" class="card-img-top" alt="About Ansh" height="100" width="100">
+              <div class="card-body">
+                <h5 class="card-title">About Ansh</h5>
+
+              </div>
+            </div>
+          </div>
+
+
+
         </div>
       </div>
 
- 
 
-  </div> 
-</div>
-
-
-</div>
-</div>
-       
+    </div>
+  </div>
 
 
-    </body></html>
+  <script>
+
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', evt => {
+      if (sessionStorage.getItem('InstallPromptShown') === 'true') {
+        return;
+      }
+      console.log('before install prompt FROM app.js');
+      evt.preventDefault();
+      deferredPrompt = evt;
+
+      setTimeout(() => {
+        /*if(deferredPrompt) {
+          deferredPrompt.prompt();
+  	
+          deferredPrompt.userChoice.then((choiceResult) => {
+            if(choiceResult.outcome === 'accepted') {
+              console.log('user accepted install prompt');
+              localStorage.setItem('InstallPromptShown','true');
+            } else {
+              console.log('user dismmised install prompt');
+            }
+          	
+          deferredPrompt=null;
+          });
+        }*/
+        document.getElementById('installModal').style.display = 'flex';
+        document.getElementById('installButton').addEventListener('click', () => {
+
+          if (deferredPrompt) {
+            deferredPrompt.prompt();
+
+            deferredPrompt.userChoice.then((choiceResult) => {
+              if (choiceResult.outcome === 'accepted') {
+                console.log('user accepted install prompt');
+               
+              } else {
+                console.log('user dismmised install prompt');
+              }
+              sessionStorage.setItem('InstallPromptShown', 'true');
+              document.getElementById('installModal').style.display = 'none';
+              deferredPrompt = null;
+            });
+          }
+        });
+
+        document.getElementById('dismissButton').addEventListener('click', () => { 
+          document.getElementById('installModal').style.display = 'none';
+          sessionStorage.setItem('InstallPromptShown', 'true');
+
+        });
+
+
+      }, 1000);
+    });
+
+
+
+  </script>
+</body>
+
+</html>

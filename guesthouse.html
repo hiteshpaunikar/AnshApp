@@ -94,19 +94,19 @@
 
               <span class="col-lg-8" style="padding-left: 1rem;padding-top: 1rem;">
           
-                <p style="text-align: justify;"> <b>ISRO Guest House Facility : </b>The Indian Space Research Organisation (ISRO) provides guest house accommodations to its employees and retired employees  across various cities in India. These facilities are designed to offer a comfortable and convenient stay, primarily for employees on official duty, training, or transit. <br/> 
+                <p style="text-align: justify;"> <b>ISRO Guest House Facility : </b>The Indian Space Research Organisation (ISRO) provides guest house accommodations to their employees and retired employees  across various cities in India. These facilities are designed to offer a comfortable and convenient stay, primarily for employees on official duty, training, or transit. <br/> 
                   <p style="font-weight: bold;margin-bottom: 0px;">* <u>Key Features : </u></p>
                   <ul style="list-style: disc;text-align: justify;">
-                    <li>Well-furnished rooms with essential amenities.</li>
+                    <li>Well-furnished rooms with essential amenities</li>
                     <li>Dining facilities with homely meals</li>
-                    <li>Affordable charges with priority given to official bookings.</li>
+                    <li>Affordable charges with priority given to official bookings</li>
                   </ul>
                   
                   <p style="font-weight: bold;margin-top: 1rem;margin-bottom: 0px;">* <u>Eligibility : </u></p>
                   <ul style="list-style: disc;text-align: justify;">
-                    <li>ISRO employees (current and retired).</li>
+                    <li>ISRO employee (Serving and Retired)</li>
                     
-                    <li style="font-weight: bold;color: red;">Accommodation is subject to availability and must be booked in advance through the concerned ISRO center.</li>
+                    <li style="font-weight: bold;color: red;">Accommodation is subject to availability and must be booked in advance through the concerned ISRO centre</li>
                   </ul>
 
                 </p>       
@@ -225,7 +225,7 @@
         const[lat,lng]=geolocation.split(',').map(coord => coord.trim());
         
         let mapsURL = `https://www.google.com/maps?q=${lat},${lng}`;
-        window.open(mapsURL,'_blank');
+        window.location.href=mapsURL;
     }
     function renderguesthouses(guesthousesToRender) {
       
@@ -242,19 +242,23 @@
             <div class="card">
               <div class="card-header">
                 <h5 style="margin-bottom:0px;">
-                  <td align="right"><img src="images/guest.png" height="40"> ${guesthouse.CITYNAME || 'N/A'} (${guesthouse.NAME})  
+                  <td align="right"><img src="images/guest.png" height="35">  ${guesthouse.CITYNAME || 'N/A'} (${guesthouse.NAME})  
                 </h5>
               </div>
               <div class="card-body">
                 
-                <p class="mb-1"> <img src="images/map.png" height="30" style="padding-left: 0px;" onclick="openGoogleMaps('${guesthouse.GEOLOCATION || ''}')"  >
-                  ${guesthouse.STREET1} ${guesthouse.STREET2 || ''} ${guesthouse.PLACENAME || ''}  ${guesthouse.CITYNAME || ''}, ${guesthouse.STATE || ''} ${guesthouse.PINCODE || ''}</p>
-                
-                  <p class="mb-1"><strong>Phone No:</strong> (Ext : ${guesthouse.EXTENSION})  ${guesthouse.TELENO || 'N/A'}</p>
-                  <p class="mb-1"><strong>PRO Phone : </strong> ${guesthouse.PRONO || 'N/A'}</p>
-                <p class="mb-1"><strong>PRO Phone : </strong> ${guesthouse.PRONO || 'N/A'}</p>
-                <p class="mb-1"><strong>Email  : </strong> ${guesthouse.EMAIL || 'N/A'}</p>
-                <p class="mb-1"><strong>Transport : </strong>  ${[guesthouse.TRANSPORT_EMAIL, guesthouse.TRANSPORT_EMAIL].filter(Boolean).join(', ') || 'N/A'}  </p>
+                <span class="mb-1">
+                <i class="fas fa-address-card"></i> <strong>:</strong> ${guesthouse.STREET1} ${guesthouse.STREET2 || ''} ${guesthouse.PLACENAME || ''}  ${guesthouse.CITYNAME || ''}, ${guesthouse.STATE || ''} ${guesthouse.PINCODE || ''} </span>                
+                <table width="100%"><tr><td>
+                <span class="mb-1"><i class="fas fa-phone-square-alt"></i> <strong>:</strong> (Ext : ${guesthouse.EXTENSION})  ${guesthouse.TELENO || 'N/A'}</span><br/> 
+                <span class="mb-1"><i class="fas fa-mobile-alt"></i> <strong>:</strong> (PRO) ${guesthouse.PRONO  || 'N/A'} </span><br/>
+                <span class="mb-1"><i class="fas fa-envelope-square"></i> <strong>:</strong> ${guesthouse.EMAIL || 'N/A'}</span><br/>
+                <span class="mb-1"><i class="fas fa-car"></i> <strong>:</strong>  ${[guesthouse.TRANSPORT, guesthouse.TRANSPORT_EMAIL].filter(Boolean).join(', ') || 'N/A'}  </span><br/>
+              </td>
+              <td align="right" style="vertical-align:top;">
+                <img src="images/map.png" height="35" style="padding-left: 0px;" onclick="openGoogleMaps('${guesthouse.GEOLOCATION || ''}')"  >
+                </td>
+              </tr></table>
               
               </div>
             </div>

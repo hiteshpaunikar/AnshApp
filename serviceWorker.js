@@ -1,18 +1,13 @@
 
-const staticCacheName = ['ansh-v2'];
-const CACHE_NAME='ansh-v2';
+const staticCacheName = ['ansh-v1'];
+const CACHE_NAME='ansh-v1';
 
 const URLS_CACHE_ONLY = [
 	  '/AnshApp/images/mic.png'	,
-	  '/AnshApp/Shortcut_Home.PNG',
-	  '/AnshApp/Shortcut_Supp.PNG',
 	  '/AnshApp/images/about.png',
 	  '/AnshApp/images/amo.png',
-	  '/AnshApp/images/ansh.png',
-	   '/AnshApp/images/box.png',
 	  '/AnshApp/images/calendar.png',
 	  '/AnshApp/images/call.png',
-	   
 	  '/AnshApp/images/doctor.png',
 	  '/AnshApp/images/guest.png',
 	   '/AnshApp/images/holiday.png',
@@ -29,19 +24,11 @@ const URLS_CACHE_ONLY = [
 	  '/AnshApp/images/icu.png',
 	  
 	  '/AnshApp/images/specialist.png',
-	  '/AnshApp/images/spinner_arrow.png',
+	
 	  '/AnshApp/images/supplementry.png',
 	  '/AnshApp/images/undraw_add_tasks_mxew.svg',
 	  '/AnshApp/images/wardcharges.png',
-	  '/AnshApp/images/icons/icon-72x72.png',
-	  '/AnshApp/images/icons/icon-96x96.png',
-	  '/AnshApp/images/icons/icon-128x128.png',
-	  '/AnshApp/images/icons/icon-144x144.png',
-	  '/AnshApp/images/icons/icon-152x152.png',
-	  '/AnshApp/images/icons/icon-192x192.png',
-	  '/AnshApp/images/icons/icon-384x384.png',
-	  '/AnshApp/images/icons/icon-512x512.png',
-	  
+
 	  '/AnshApp/css/all.min.css' ,
 	  '/AnshApp/css/bootstrap.min.css' ,
 	  
@@ -94,10 +81,10 @@ const URLS_OVER_NETWORK_WITH_CACHE_FALLBACK = [
 
 //document.getElementById("panelInstall").show();
 
-let deferredPrompt;
+/*let deferredPrompt;
 
 self.addEventListener('beforeinstallprompt', evt => {
-	console.log('before install prompt');
+	console.log('before install prompt FROM SERVICEWORKER');
 	evt.preventDefault();
 	deferredPrompt = evt; 
 
@@ -115,7 +102,7 @@ self.addEventListener('beforeinstallprompt', evt => {
 			});
 		}
 		},2000);
-	});
+	});*/
 
 
 

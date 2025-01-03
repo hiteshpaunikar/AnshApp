@@ -17,17 +17,23 @@
     "type": "image/png",
     "form_factor":"wide"
   },{
-    "src": "Shortcut_Home.PNG",
+    "src": "screenshot_d1.png",
     "sizes": "320x320",
     "type": "image/png",
     "form_factor":"wide"
   },{
-    "src": "Shortcut_Supp.PNG",
+    "src": "screenshot_d2.png",
     "sizes": "320x320",
     "type": "image/png",
     "form_factor":"wide"
   },{
-    "src": "Shortcut_Home_icon.PNG",
+    "src": "screenshot_m1.png",
+    "sizes": "320x320",
+    "type": "image/png"
+    
+  },
+  {
+    "src": "screenshot_m2.png",
     "sizes": "320x320",
     "type": "image/png"
     
