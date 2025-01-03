@@ -174,11 +174,18 @@
     }
 
     // Initialize speech recognition
-    if ('webkitSpeechRecognition' in window) {
-      recognition = new webkitSpeechRecognition();
-      recognition.continuous = false;
-      recognition.interimResults = false;
-      recognition.lang = 'en-US';
+    function initializeSpeechRecognition() {
+      if ('webkitSpeechRecognition' in window) {
+        recognition = new webkitSpeechRecognition();
+      }
+      else if('SpeechRecognition' in window) {
+          recognition = new SpeechRecognition();
+      }
+
+      if(recognition) {
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.lang = 'en-US';
 
       recognition.onresult = function (event) {
         const transcript = event.results[0][0].transcript;
@@ -190,12 +197,17 @@
       recognition.onerror = function (event) {
         console.error('Speech recognition error:', event.error);
         stopRecognition();
+        if(event.error === 'not-allowed') {
+              alert("Please allow microphone access to use voice search.");
+        }
       };
 
       recognition.onend = function () {
         stopRecognition();
       };
     }
+  } 
+  initializeSpeechRecognition();
 
     function stopRecognition() {
       isListening = false;
@@ -220,7 +232,7 @@
           stopRecognition();
         }
       } else {
-        alert('Speech recognition is not supported in your mobile.');
+        alert('Speech recognition is not supported.');
       }
     });
 
@@ -248,13 +260,13 @@
             <div class="card">
               <div class="card-header">
                 <h5 style="margin-bottom:0px;">
-                  <td align="right"><img src="images/guest.png" height="35">  ${guesthouse.CITYNAME || 'N/A'} (${guesthouse.NAME})  
+                  <td align="right"><img src="images/guest.png" height="35">  ${guesthouse.CITYNAME || 'N/A'} (${guesthouse.CENTRE})  
                 </h5>
               </div>
               <div class="card-body">
                 
                 <span class="mb-1">
-                <i class="fas fa-address-card"></i> <strong>:</strong> ${guesthouse.STREET1} ${guesthouse.STREET2 || ''} ${guesthouse.PLACENAME || ''}  ${guesthouse.CITYNAME || ''}, ${guesthouse.STATE || ''} ${guesthouse.PINCODE || ''} </span>                
+                <i class="fas fa-address-card"></i> <strong>:</strong> ${guesthouse.NAME}, ${guesthouse.STREET1} ${guesthouse.STREET2 || ''} ${guesthouse.PLACENAME || ''}  ${guesthouse.CITYNAME || ''}, ${guesthouse.STATE || ''} ${guesthouse.PINCODE || ''} </span>                
                 <table width="100%"><tr><td>
                 <span class="mb-1"><i class="fas fa-phone-square-alt"></i> <strong>:</strong> (Ext : ${guesthouse.EXTENSION})  ${guesthouse.TELENO || 'N/A'}</span><br/> 
                 <span class="mb-1"><i class="fas fa-mobile-alt"></i> <strong>:</strong> (PRO) ${guesthouse.PRONO  || 'N/A'} </span><br/>
@@ -262,6 +274,8 @@
                 <span class="mb-1"><i class="fas fa-car"></i> <strong>:</strong>  ${[guesthouse.TRANSPORT, guesthouse.TRANSPORT_EMAIL].filter(Boolean).join(', ') || 'N/A'}  </span><br/>
               </td>
               <td align="right" style="vertical-align:top;">
+                <a href="tel:${guesthouse.PRIMARYPHONE}" class="dial-link"><img src="images/call.png" height="40" style="padding-left: 0px;"> </a> 
+                <br/>
                 <img src="images/map.png" height="35" style="padding-left: 0px;" onclick="openGoogleMaps('${guesthouse.GEOLOCATION || ''}')"  >
                 </td>
               </tr></table>

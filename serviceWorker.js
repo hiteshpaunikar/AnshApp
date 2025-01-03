@@ -9,7 +9,10 @@ const URLS_CACHE_ONLY = [
 	  '/AnshApp/images/calendar.png',
 	  '/AnshApp/images/call.png',
 	  '/AnshApp/images/doctor.png',
+	  '/AnshApp/images/doctor_ss.png',
+	  '/AnshApp/images/ansh.png',
 	  '/AnshApp/images/guest.png',
+	  '/AnshApp/images/guest_ss.png',
 	   '/AnshApp/images/holiday.png',
 	  '/AnshApp/images/ic_launcher_round.png',
 	   '/AnshApp/images/imptel.png',
@@ -22,11 +25,8 @@ const URLS_CACHE_ONLY = [
 	  '/AnshApp/images/phone.png',
 	  '/AnshApp/images/saclogo.jpg',
 	  '/AnshApp/images/icu.png',
-	  
 	  '/AnshApp/images/specialist.png',
-	
 	  '/AnshApp/images/supplementry.png',
-	  '/AnshApp/images/undraw_add_tasks_mxew.svg',
 	  '/AnshApp/images/wardcharges.png',
 
 	  '/AnshApp/css/all.min.css' ,
@@ -109,7 +109,7 @@ self.addEventListener('beforeinstallprompt', evt => {
 
 
 self.addEventListener("install", event => {
-	console.log('Inside install');
+	//console.log('Inside install');
 	/*evt.waitUntil(
 			    caches.open(staticCacheName).then(cache => {
 			    	console.log("Installed"+URLS_CACHE_ONLY);
@@ -119,12 +119,12 @@ self.addEventListener("install", event => {
 	
 	event.waitUntil(
 		       caches.open(staticCacheName).then(function(cache) {
-		    	   console.log('adding to cache');
+	//	    	   console.log('adding to cache');
 		           return cache.addAll(
 		            URLS_CACHE_ONLY.concat(URLS_OVER_NETWORK_WITH_CACHE_FALLBACK)
 		           );
 		       }).catch((err) => {
-		           console.log(err);
+	//	           console.log(err);
 		           return new Promise((resolve, reject) => {
 		               reject('ERROR: ' + err);
 		           });
@@ -134,7 +134,7 @@ self.addEventListener("install", event => {
 })
 
 self.addEventListener("activate", evt => {
-	console.log("Activated service worker");
+//	console.log("Activated service worker");
 	/*evt.waitUntil(
 			caches.keys().then(keyList => {
 				console.log(keyList);
@@ -161,10 +161,10 @@ self.addEventListener("activate", evt => {
 		       caches.keys().then(function (cacheNames) {
 		           return Promise.all(
 		               cacheNames.map(function (cacheName) {
-		            	   console.log(staticCacheName + " : " + cacheName);
+		            	//   console.log(staticCacheName + " : " + cacheName);
 		                   if (staticCacheName != cacheName && cacheName.startsWith("ansh")) {
 		                	   
-		                	   console.log("Deleting cache");
+		                //	   console.log("Deleting cache");
 		                       return caches.delete(cacheName);
 		                   }
 						   
@@ -184,7 +184,7 @@ self.addEventListener('message',(event) => {
 })
  
 self.addEventListener("fetch", evt => {
-	 console.log("Fetch : " + evt.request.url);
+//	 console.log("Fetch : " + evt.request.url);
 /*	evt.respondWith(
 			   caches.match(evt.request).then(function(response) {
 			     return response || fetch(evt.request);
@@ -194,20 +194,20 @@ self.addEventListener("fetch", evt => {
 	 
 	 
 	   const requestURL = new URL(evt.request.url);
-console.log("PATH Name URL : " + requestURL.pathname);
+//console.log("PATH Name URL : " + requestURL.pathname);
 	   if (requestURL.pathname == '/' || requestURL.pathname == '/AnshApp/') {
-			console.log("first time");
+//			console.log("first time");
 		   evt.respondWith(getByNetworkFallingBackByCache("/AnshApp/"));
 	   } else if (URLS_OVER_NETWORK_WITH_CACHE_FALLBACK.includes(requestURL.href) ||
 	       URLS_OVER_NETWORK_WITH_CACHE_FALLBACK.includes(requestURL.pathname)) {
-			console.log("second time");
+//			console.log("second time");
 		   evt.respondWith(getByNetworkFallingBackByCache(evt.request));
 	   } else if (URLS_CACHE_ONLY.includes(requestURL.href) || 
 	      URLS_CACHE_ONLY.includes(requestURL.pathname)) {
-			console.log("third time");
+//			console.log("third time");
 		   evt.respondWith(getByCacheOnly(evt.request));
 	   } else{
-		console.log("four time");
+//		console.log("four time");
 	   }
 })
 
@@ -224,7 +224,7 @@ console.log("PATH Name URL : " + requestURL.pathname);
 const getByNetworkFallingBackByCache = (request, showAlert = false) => {
 	
    return caches.open(staticCacheName).then((cache) => {
-	   console.log("fetch from network and then cache");
+	//   console.log("fetch from network and then cache");
        return fetch(request).then((networkResponse) => {
            cache.put(request, networkResponse.clone());
            return networkResponse;
@@ -298,7 +298,7 @@ const getByNetworkFallingBackByCache = (request, showAlert = false) => {
 const getByCacheThenNetwork = (request, showAlert = false) => {
 
 	caches.match(request).then((cachedResponse)=> {
-		console.log("fetch from network ");
+	//	console.log("fetch from network ");
 		const netwrorkFetch = fetch(request)
 		.then((networkResponse) => {
 			return caches.open(staticCacheName).then((cache) => {
@@ -307,10 +307,10 @@ const getByCacheThenNetwork = (request, showAlert = false) => {
 			});
 		})
 		.catch(() => {
-			console.log("if no network then return from cache ");
+	//		console.log("if no network then return from cache ");
 			return cachedResponse;
 		});
-		console.log("return from cache ");
+	//	console.log("return from cache ");
 		return cachedResponse || netwrorkFetch;
 	});
 };
@@ -323,7 +323,7 @@ const getByCacheThenNetwork = (request, showAlert = false) => {
 * @returns Promise
 */
 const getByCacheOnly = (request) => {
-	console.log("fetch from cache");
+//	console.log("fetch from cache");
    return caches.open(staticCacheName).then((cache) => {
        return cache.match(request).then((response) => {
            return response;

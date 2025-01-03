@@ -92,8 +92,8 @@
               <p style="font-weight: bold;margin-bottom: 0px;margin-left: 0px;">* <u>Key Features : </u></p>
             <ul style="list-style: disc;text-align: justify;">
             <li><b>Doctor List:</b> ISRO medical facilities consists a teams of healthcare professionals, including general physicians, specialists (such as cardiologists, orthopedics, ENT specialists etc.), and paramedical staff</li>
-            <li><b>Hospital List:</b> ISRO operates and collaborates with hospitals to provide best facilities. These hospitals cater to routine check-ups, specialized treatments and emergencies</li>
-            <li><b>	Laboratory Services: </b>Accredited diagnostic laboratories associated with ISRO facilities provide a wide range of testing services, including blood tests, imaging (X-ray, MRI, CT scans etc.) and other advanced diagnostics essential for employee health monitoring</li>
+            <li><b>Hospital List:</b> ISRO collaborates with hospitals to provide best facilities. These hospitals caters routine health check-ups, specialized treatments and emergencies</li>
+            <li><b>	Diagnostic Services: </b>Accredited pathology laboratories & radilogy services are associated with CHSS facilities to provide a wide range of testing services, including blood tests, imaging (X-ray, MRI, CT scans etc.) and other advanced diagnostics essential for employee health monitoring</li>
             
           </ul>
           
@@ -343,7 +343,13 @@
           filtered = doctors.filter(doctor => 
             doctor.MEDDISCIPLNAME === selectedDiscipline
           );
-        } else {
+        } 
+        else if (filterType !== 'all') {
+          filtered = doctors.filter(doctor => 
+            doctor[filterType] && 
+            doctor[filterType].toLowerCase().includes(searchTerm)
+          );
+        }else {
           filtered = doctors.filter(doctor => 
             Object.values(doctor).some(value => 
               value && value.toLowerCase().includes(searchTerm)

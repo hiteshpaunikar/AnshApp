@@ -46,19 +46,14 @@
         font-weight: bold;
       }
       .bkg{
-        display: none;
-      }
-
-      @media(max-width:680px) {
-      .bkg{
         background-image: url(images/calendar.png);
         background-repeat: no-repeat;
         background-size: contain;
         font-size: large;
-        
         display: block;
       }
-    }
+
+      
       .header-content {
         
         padding: 2rem;
@@ -205,13 +200,13 @@
                     </tr>
                     ${holidays.map(holiday => `
                       <tr>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bkg" style="padding-top:0.7rem">${new Date(holiday.DateofHoliday).toLocaleDateString('en-IN', {
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-xl-3 bkg" style="padding-top:0.7rem">${new Date(holiday.DateofHoliday).toLocaleDateString('en-IN', {
                           day: '2-digit',
                           
                           
                         })}</td>
-                        <td>${holiday.Description}</td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3">${shortday(holiday.Dayofweek)}</td>
+                        <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-xl-6">${holiday.Description}</td>
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 col-xl-3">${shortday(holiday.Dayofweek)}</td>
                       </tr>
                     `).join('')}
                   `).join('')}
