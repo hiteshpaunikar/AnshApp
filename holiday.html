@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ansh App">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="images/ansh.png">
+  <link href="css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="js/app.js">  </script>
+  <style>
+      .card {
+        background: rgba(255, 255, 255, 0.95);
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        backdrop-filter: blur(4px);
+        transition: transform 0.3s ease;
+      }
+      .month-header {
+        color: #333333;
+        font-weight: 600;
+      }
+      .month-header td {
+        background:rgb(54, 54, 179);
+        border-bottom: 2px solid #7E69AB;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        font-size: larger;
+      }
+      
+      .table {
+        border-collapse: separate;
+        border-spacing: 0 8px;
+      }
+      .table tbody tr {
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+      .table tbody tr th,td{
+        width: auto !important;
+        font-weight: bold;
+      }
+      .bkg{
+        display: none;
+      }
+
+      @media(max-width:680px) {
+      .bkg{
+        background-image: url(images/calendar.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        font-size: large;
+        
+        display: block;
+      }
+    }
+      .header-content {
+        
+        padding: 2rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        border: 1px solid #E5DEFF;
+      }
+      .header-title {
+        color: #333333;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+      .header-subtitle {
+        color: #8E9196;
+        font-size: 1.1rem;
+      }
+      
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row pt-3 nav-wrapper" style="background-color: rgb(54, 54, 179);color: white;"">
+      <div class="col-lg-12">
+        <div class="panel " style="margin-bottom: 0px;">
+          <div class="panel-content">
+            <!-- DataTables -->
+            <table style="width: 100%">
+              <tbody>
+                <tr>
+                  <td align="left" style="cursor: pointer;" onclick="window.location.href='/AnshApp/index.html'">
+
+                    <img src="images/ic_launcher_round.png" height="50"
+                      style="margin-left: 0px; padding-left: 0px; padding-right: 5px;">
+                  </td>  
+                  <td align="center">
+                    <h5 style="font-weight: bold;font-size: larger;">
+                      Holiday List <br />
+                    </h5>
+                  </td>
+                  <td align="right"><img src="images/holiday.png" height="50" style="padding-left: 5px;padding-bottom: 5px;"></td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" >
+     
+      <div class="d-none d-lg-block col-lg-12">
+        <div class="container-fluid" style="text-align: center;">
+
+          <div class="row">
+          <span class="col-lg-4">
+          <img src="images/holiday.png" height="300"  style="padding-top: 10px;padding-bottom: 10px">
+          </span>
+
+          <span class="col-lg-8" style="padding-left: 1rem;padding-top: 1rem;">
+          
+            <p style="text-align: justify;"> <b>Holiday List for SAC Employees : </b>SAC provides its employees with a number of holidays throughout the year in observance of major religious and cultural festivals.<br/> 
+              <p style="font-weight: bold;margin-bottom: 0px;text-align: justify;">* <u>Festival-Based Holidays: <br/></u></p>
+              <ul style="list-style: disc;text-align: justify;">
+                <li>SAC recognizes a variety of national and regional festivals celebrated across India</li>
+                <li>The holiday dates may vary depending on the specific cultural and religious observances followed by employees in different regions</li>
+                
+              </ul>
+              
+              <p style="font-weight: bold;margin-top: 1rem;margin-bottom: 0px;text-align: justify;color:red"> 
+                Employees are advised to view the official SAC holiday list each year, as the dates may be subject to administrative approval and adjustments.
+              </p>
+            </p> 
+          
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="container py-4" style="background-image: linear-gradient(180deg,rgb(54, 54, 179) 5%, transparent)">
+        <div class="row gx-1">
+
+            <div class="card">
+              <div class="card-body">
+                <div id="holidayList">
+                  <div class="text-center">
+                    <div class="loading-spinner"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script>
+      function shortday(day) {
+        const days={
+          Sunday : "<span style='color:red;font-weight:bold'>Sun</span>",
+          Monday : "Mon",
+          Tuesday : "Tue",
+          Wednesday : "Wed",
+          Thursday : "Thu",
+          Friday : "Fri",
+          Saturday : "<span style='color:red;font-weight:bold'>Sat</span>"
+
+        };
+        return days[day];
+      }
+      async function fetchHolidays() {
+        try {
+          const response = await fetch('data/HolidayData.json', {
+            headers: {
+            'Cache-Control':'no-cache,no-store,must-revalidate',
+            'Pragma':'no-cache',
+            'Expires':'0'
+          }
+          });
+          const data = await response.json();
+          
+          const holidayList = document.getElementById('holidayList');
+          holidayList.innerHTML = '';
+          
+          const holidaysByMonth = data.holidays.reduce((acc, holiday) => {
+            const date = new Date(holiday.DateofHoliday);
+            const month = date.toLocaleString('default', { month: 'long', year: 'numeric' });
+            
+            if (!acc[month]) {
+              acc[month] = [];
+            }
+            acc[month].push(holiday);
+            return acc;
+          }, {});
+
+// Create a single table with all holidays
+          const tableHTML = `
+            <div class="table-responsive">
+              <table class="table">
+                
+                <tbody>
+                  ${Object.entries(holidaysByMonth).map(([month, holidays]) => `
+                    <tr class="month-header">
+                      <td colspan="3">${month}</td>
+                    </tr>
+                    ${holidays.map(holiday => `
+                      <tr>
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bkg" style="padding-top:0.7rem">${new Date(holiday.DateofHoliday).toLocaleDateString('en-IN', {
+                          day: '2-digit',
+                          
+                          
+                        })}</td>
+                        <td>${holiday.Description}</td>
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3">${shortday(holiday.Dayofweek)}</td>
+                      </tr>
+                    `).join('')}
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          `;
+          
+          holidayList.innerHTML = tableHTML;
+        
+         } catch (error) {
+          const holidayList = document.getElementById('holidayList');
+          holidayList.innerHTML = `
+            <div class="alert alert-danger animate__animated animate__shakeX" role="alert">
+              Error loading holiday list. Please try again later.
+            </div>
+          `;
+          console.error('Error fetching holidays:', error);
+        }
+      }
+
+      fetchHolidays();
+    </script>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Ansh App">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="images/ansh.png">
+
+  <link href="css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="js/app.js">  </script>
+  <style>
+    .card {
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .card-header h5{
+      
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+    .card-title {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1rem;
+      font-family: Arial, sans-serif;
+    }
+    .card-img-top {
+      height: "100";
+      width: "50";
+      object-fit: contain;
+    }
+    ul {
+      list-style-type: disc;
+      padding-left: 1em;
+    }
+    li {
+      text-align: justify;
+    }
+    h5 {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container-fluid">
+    <div class="row pt-3 nav-wrapper" style="background-color: rgb(54, 54, 179);color: white;">
+      <div class="col-lg-12">
+        <div class="panel " style="margin-bottom: 0px;">
+          <div class="panel-content">
+            <!-- DataTables -->
+            <table style="width: 100%">
+              <tbody>
+                <tr>
+                  <td align="left" style="cursor: pointer;" onclick="window.location.href='/AnshApp/index.html'">
+
+                    <img src="images/ic_launcher_round.png" height="50"
+                      style="margin-left: 0px; padding-left: 0px; padding-right: 5px;">
+                  </td>  
+                  <td align="center">
+                    <h5 style="font-weight: bold;">
+                      CHSS Supplementary Items <br />
+                    </h5>
+                  </td>
+                  <td align="right"><img src="images/supplementry.png" height="50" style="padding-left: 5px;"></td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row" >
+    
+      <div class="d-none d-lg-block col-lg-12">
+        <div class="container-fluid" style="text-align: center;">
+
+          <div class="row">
+          <span class="col-lg-4">
+          <img src="images/supplementry.png" height="300"  style="padding-top: 10px;padding-bottom: 10px">
+          </span>
+
+          <span class="col-lg-8" style="padding-left: 1rem;padding-top: 1rem;">
+          
+            <p style="text-align: justify;"> <b>Supplementary Medical Items under CHSS : </b>The Indian Space Research Organisation (ISRO) supports its employees’ health and well-being by providing supplementary medical items under its comprehensive healthcare policy. These provisions aim to ensure employees have access to necessary medical aids beyond routine care.<br/> 
+              <p style="font-weight: bold;margin-bottom: 0px;padding: 0px;text-align: justify;">* <u>Key Benefits : </u></p>
+              <ul style="list-style: disc;text-align: justify;">
+                <li>	<b>Reimbursement: </b>Costs for specific supplementary medical items prescribed by authorized medical officers are reimbursed</li>
+                <li>	<b>Coverage: </b>Includes items such as Nebulizer devices, CPAP machine, Hearing aids and other prescribed medical accessories</li>
+                <li>	<b>Eligibility: </b>Applicable to SAC employees and their dependent family members as per ISRO medical policy </li>
+                <li>	<b>Ease of Access:</b> Claims are processed through a structured procedure with the required prescriptions and receipts</li>
+
+              </ul>
+              
+              
+
+            </p> 
+          
+            </span>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="container py-4" style="background-image: linear-gradient(180deg,rgb(54, 54, 179) 5%, transparent)">
+        <div class="row gx-1">
+          <div id="accordion">
+
+            <div class="card m-2">
+              <div class="card-header" data-bs-toggle="collapse" href="#collapseOne">
+                <h5>
+                  Glucometer : <i class="fas fa-chevron-circle-down" style="float:right;margin-top: 0.5rem;"></i>
+                </h5>
+              </div>
+              <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
+                <div class="card-body">
+                  <h5>
+                    <ul>
+                      <li>One Per Family, Life Time. </li>
+                      <li>Recommendation is required by Panel Specialist. </li>
+                      <li>The item should be purchased from licensed shop (Shop Tin No. required). </li>
+                      <li>Claim in Form No. 7, countersigned by AMO with prescription and bill in original.</li>
+                      <li><span style="color: red;">Amount Limit : </span>The Maximum Reimbursement is Rs.1,200/-</li>
+                    </ul>
+                  </h5>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="card m-2">
+              <div class="card-header" data-bs-toggle="collapse" href="#collapseTwo">
+                <h5>
+                  Glucometer Strips : <i class="fas fa-chevron-circle-down" style="float:right;"></i>
+                </h5>
+              </div>
+              <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+                <div class="card-body">
+                  <h5>
+                    <ul>
+                      <li>100 Per Beneficiary / 150 per Juvenile in a year.</li>
+                      <li>Recommendation is required by Panel Specialist. </li>
+                      <li>The item should be purchased from licensed shop (Shop Tin No. required). </li>
+                      <li>Claim in Form No. 7, countersigned by AMO with prescription and bill in original.</li>
+                      <li>10 needles per month and 20 BD syringes per month per patient is allowed.</li>
+                    </ul>
+                  </h5>
+                </div>
+              </div>
+            </div>
+
+            <div class="card m-2">
+              <div class="card-header" data-bs-toggle="collapse" href="#collapseThree">
+                <h5>
+                  Insulin Pen : <i class="fas fa-chevron-circle-down" style="float:right;"></i>
+                </h5>
+              </div>
+              <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
+                <div class="card-body">
+                  <h5>
+                    <ul>
+                      <li>One Per Beneficiary, Life Time or when replacement required.</li>
+                      <li>Recommendation is required by Panel Endocrinologist. </li>
+                      <li>The item should be purchased from licensed shop (Shop Tin No. required). </li>
+                      <li>Claim in Form No. 7, countersigned by AMO with prescription and bill in original.</li>
+                    </ul>
+                  </h5>
+                </div>
+              </div>
+            </div>
+
+            <div class="card m-2">
+              <div class="card-header" data-bs-toggle="collapse" href="#collapseFour">
+                <h5>
+                  CPAP Machine : <i class="fas fa-chevron-circle-down" style="float:right;"></i>
+                </h5>
+              </div>
+              <div id="collapseFour" class="collapse" data-bs-parent="#accordion">
+                <div class="card-body">
+                  <h5>
+                    <ul>
+                      <li>One Per Beneficiary, Life Time. (Need Prior Approval)</li>
+                      <li>Recommendation is required by Panel Pulmonologist. </li>
+                      <li>The item should be purchased from licensed shop (Shop Tin No. required). </li>
+                      <li>Claim in Form No. 7, countersigned by AMO with prescription and bill in original.</li>
+                      <li><span style="color: red;">Amount Limit : </span>The Maximum Reimbursement is Rs.45,000/-</li>
+                    </ul>
+                  </h5>
+                </div>
+              </div>
+            </div>
+
+            <div class="card m-2">
+              <div class="card-header" data-bs-toggle="collapse" href="#collapseFive">
+                <h5>
+                  Nebulizer Machine : <i class="fas fa-chevron-circle-down" style="float:right;"></i>
+                </h5>
+              </div>
+              <div id="collapseFive" class="collapse" data-bs-parent="#accordion">
+                <div class="card-body">
+                  <h5>
+                    <ul>
+                      <li>One Per Family, Life Time.</li>
+                      <li>Recommendation is required by Panel Specialist. </li>
+                      <li>The item should be purchased from licensed shop (Shop Tin No. required). </li>
+                      <li>Claim in Form No. 7, countersigned by AMO with prescription and bill in original.</li>
+                      <li><span style="color: red;">Amount Limit : </span>The Maximum Reimbursement is Rs.1,500/-</li>
+                    </ul>
+                  </h5>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="card m-2">
+              <div class="card-header" data-bs-toggle="collapse" href="#collapseSix">
+                <h5>
+                  Analog / Digital Hearing AID - Unilateral or Bilateral : <i class="fas fa-chevron-circle-down"
+                    style="float:right;"></i>
+                </h5>
+              </div>
+              <div id="collapseSix" class="collapse" data-bs-parent="#accordion">
+                <div class="card-body">
+                  <h5>
+                    <ul>
+                      <li>One Pair Per Beneficiary, Life Time. </li>
+                      <li>Three Audiogram reports from 3 different Panel ENT Specialist and then prescription from AMO
+                        is required. </li>
+                      <li>The item may be bought from CHSS empanelled Seller : Dr. B Mallikajun, PHC Hearing Aids Care,
+                        25 Palm Spring, 2nd Floor, Ellisbridge, Near Parimal Garden, Ahmedabad, Phone - 26461963 </li>
+                      <li>Claim in Form No. 7, countersigned by AMO with prescription and bill in original.</li>
+                      <li><span style="color: red;">Amount Limit : </span>One side hearing aid (body worn/pocket/BTE or
+                        in the canal type)(conventional) - Rs.10000/- </li>
+                      <li><span style="color: red;">Amount Limit : </span>Bilateral hearing aid - Rs.20000/- </li>
+                      <li><span style="color: red;">Amount Limit : </span>Digital hearing aid (each ear,once in a
+                        lifetime) - Rs.30000/-</li>
+                      <li><span style="color: red;">Amount Limit : </span>Ear mould for each ear - Rs.100/-</li>
+                    </ul>
+                  </h5>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="card m-2">
+              <div class="card-header" data-bs-toggle="collapse" href="#collapseSeven">
+                <h5>
+                  Drug Eluding Stents : <i class="fas fa-chevron-circle-down" style="float:right;"></i>
+                </h5>
+              </div>
+              <div id="collapseSeven" class="collapse" data-bs-parent="#accordion">
+                <div class="card-body">
+                  <h5>
+                    <ul>
+                      <li>Three Per Beneficiary, Life Time (Additional with approval of office). </li>
+                      <li>Recommendation is required by Panel Cardiologist. </li>
+                      <li>Claim directly by hospital. </li>
+                      <li><span style="color: red;">Amount Limit : </span>The Maximum Reimbursement is Rs.95,000/- per
+                        Stent.</li>
+                    </ul>
+                  </h5>
+                </div>
+              </div>
+            </div>
+
+            <div class="card m-2">
+              <div class="card-header" data-bs-toggle="collapse" href="#collapseEight">
+                <h5>
+                  In Vitro Fertilization : <i class="fas fa-chevron-circle-down" style="float:right;"></i>
+                </h5>
+              </div>
+              <div id="collapseEight" class="collapse" data-bs-parent="#accordion">
+                <div class="card-body">
+                  <h5>
+                    <ul>
+                      <li>Recommendation is required by Panel Gynecologist. </li>
+                      <li>Claim directly by Hospital/Specialist. </li>
+                      <li><span style="color: red;">Amount Limit : </span>The Maximum Reimbursement is Rs.65,000/- per
+                        cycle.</li>
+                    </ul>
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
