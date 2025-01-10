@@ -41,7 +41,7 @@
   "icons": [
     {
       "src": "logo.png",
-      "sizes": "182x182",
+      "sizes": "512x512",
       "type": "image/png"
     },
     {
