@@ -6,9 +6,9 @@
   "start_url": "/AnshApp/",
   "scope":"/AnshApp/",
   "display": "standalone",
-  "background_color": "white",
-  "theme_color": "white",
-  "descriptoin":"CHSS Information , Guest House Information of Space Applications Centre ",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
+  "description":"CHSS Information , Guest House Information of Space Applications Centre ",
   
   
   "screenshots": [{
